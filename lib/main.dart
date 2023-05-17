@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:vz_mid/db/helper.dart';
+import 'package:vz_mid/db/tables.dart';
 
-void main() {
+late final DBHelper db;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  db = DBHelper(EmployerTable(), ScheduleTable());
+  await db.open();
   runApp(const MyApp());
 }
 
