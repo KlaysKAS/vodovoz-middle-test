@@ -54,8 +54,10 @@ class IntervalMapper {
   static int toInt(List<TimeInterval> intervals) {
     final result = List.filled(Constants.intervalDivisions + 1, '0');
     for (var interval in intervals) {
-      final from = (interval.from.minute + Constants.interval - 1) ~/ Constants.interval;
-      final to = (interval.to.minute + Constants.interval - 1) ~/ Constants.interval;
+      final from =
+          (interval.from.minute + Constants.interval - 1) ~/ Constants.interval;
+      final to =
+          (interval.to.minute + Constants.interval - 1) ~/ Constants.interval;
       for (int i = from; i < to; ++i) {
         result[i] = '1';
       }

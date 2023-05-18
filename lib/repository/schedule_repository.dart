@@ -4,12 +4,14 @@ import 'package:vz_mid/models/employer.dart';
 import 'package:vz_mid/repository/mappers/daily_schedule.dart';
 import 'package:vz_mid/repository/mappers/employer.dart';
 import 'package:vz_mid/repository/mappers/intervals.dart';
+import 'package:vz_mid/repository/repository.dart';
 
-class ScheduleRepository {
+class ScheduleRepository implements Repository {
   final Source _source;
 
   ScheduleRepository(this._source);
 
+  @override
   Future<List<Employer>> getEmployers() async {
     final data = await _source.selectAllEmployer();
     final employers = <Employer>[];
@@ -26,6 +28,7 @@ class ScheduleRepository {
     return employers;
   }
 
+  @override
   Future<Employer> addEmployer(String name) async {
     final data = (await _source.insertEmployer(name)).first;
     final scheduleData = await _source.selectSchedule(data['id'] as int);
@@ -37,6 +40,7 @@ class ScheduleRepository {
     );
   }
 
+  @override
   Future<DailySchedule> changeSchedule(int id, DailySchedule ds) async {
     final newTime = IntervalMapper.toInt(ds.intervals);
     final changedTime = await _source.updateSchedule(id, ds.dayNumber, newTime);

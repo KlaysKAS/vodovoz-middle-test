@@ -21,7 +21,8 @@ class ScheduleMapper {
 
     for (int i = 0; i < Constants.daysInAWeek; ++i) {
       if (!days.contains(i)) {
-        dailySchedule.add(DailyScheduleMapper.fromTime(-1, i, Constants.maxIntervalValue));
+        dailySchedule.add(
+            DailyScheduleMapper.fromTime(-1, i, Constants.maxIntervalValue));
       }
     }
 
