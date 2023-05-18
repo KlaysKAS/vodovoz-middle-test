@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:vz_mid/db/helper.dart';
-import 'package:vz_mid/db/tables.dart';
+import 'package:vz_mid/service_locator/app_locator.dart';
+import 'package:vz_mid/service_locator/locator.dart';
 
-late final DBHelper db;
+late final Locator locator;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  db = DBHelper(EmployerTable(), ScheduleTable());
-  await db.open();
+  locator = AppLocator();
+  await locator.init();
+
   runApp(const MyApp());
 }
 
