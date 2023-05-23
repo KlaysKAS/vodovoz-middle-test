@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vz_mid/main.dart';
-
 import 'package:vz_mid/sheduler_state/bloc/employer_events.dart';
 import 'package:vz_mid/sheduler_state/state/employer_state.dart';
 
@@ -36,10 +35,9 @@ class EmployerBloc extends Bloc<EmployerEvent, EmployerState> {
       final newEmployer = await _repo.addEmployer(event.name);
       state.mapOrNull(
         success: (successState) {
+          final newList = successState.employers.toList()..add(newEmployer);
           emit(
-            successState.copyWith(
-              employers: successState.employers..add(newEmployer),
-            ),
+            successState.copyWith(employers: newList),
           );
         },
       );

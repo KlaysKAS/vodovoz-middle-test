@@ -47,7 +47,7 @@ class IntervalMapper {
         ),
       );
     }
-
+    intervals.sort((a, b) => a.from.compareTo(b.from));
     return intervals;
   }
 

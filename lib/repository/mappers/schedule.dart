@@ -25,6 +25,7 @@ class ScheduleMapper {
             DailyScheduleMapper.fromTime(-1, i, Constants.maxIntervalValue));
       }
     }
+    dailySchedule.sort((a, b) => a.dayNumber.compareTo(b.dayNumber));
 
     return Schedule(
       employerId: id,
