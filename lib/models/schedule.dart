@@ -8,4 +8,14 @@ class Schedule {
     required this.employerId,
     required this.schedule,
   });
+
+  Schedule copyWith({
+    int? employerId,
+    List<DailySchedule>? schedule,
+  }) {
+    return Schedule(
+      employerId: employerId ?? this.employerId,
+      schedule: schedule ?? this.schedule,
+    );
+  }
 }

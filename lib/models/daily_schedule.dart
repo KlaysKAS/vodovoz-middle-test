@@ -10,4 +10,16 @@ class DailySchedule {
     required this.dayNumber,
     required this.intervals,
   });
+
+  DailySchedule copyWith({
+    int? id,
+    int? dayNumber,
+    List<TimeInterval>? intervals,
+  }) {
+    return DailySchedule(
+      id: id ?? this.id,
+      dayNumber: dayNumber ?? this.dayNumber,
+      intervals: intervals ?? this.intervals,
+    );
+  }
 }

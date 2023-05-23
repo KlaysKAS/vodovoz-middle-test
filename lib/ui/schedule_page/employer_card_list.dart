@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vz_mid/sheduler_state/bloc/employer_bloc.dart';
 import 'package:vz_mid/sheduler_state/bloc/employer_events.dart';
 import 'package:vz_mid/sheduler_state/state/employer_state.dart';
+import 'package:vz_mid/ui/change_shedule_page/change_shedule_page.dart';
 import 'package:vz_mid/ui/fatal_error_page.dart';
 import 'package:vz_mid/ui/schedule_page/employer_card.dart';
 
@@ -39,7 +40,14 @@ class EmployersCardList extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return EmployerCard(
                   employer: result.employers[index],
-                  onEditTap: () {},
+                  onEditTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (BuildContext context) {
+                        return ChangeSchedulePage(
+                            employer: result.employers[index]);
+                      }),
+                    );
+                  },
                 );
               },
               separatorBuilder: (BuildContext context, int index) {

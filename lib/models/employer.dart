@@ -10,4 +10,16 @@ class Employer {
     required this.name,
     required this.schedule,
   });
+
+  Employer copyWith({
+    int? id,
+    String? name,
+    Schedule? schedule,
+  }) {
+    return Employer(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      schedule: schedule ?? this.schedule,
+    );
+  }
 }
